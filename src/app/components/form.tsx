@@ -9,8 +9,37 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import { axiosPublic } from "@/api/axios/axios";
+interface CustomFormProps {
+  onUpdated: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-function CustomForm() {
+function CustomForm({ onUpdated }: CustomFormProps) {
+  const [userName, setUserName] = React.useState<string>("");
+  const [userEmail, setUserEmail] = React.useState<string>("");
+
+
+  const handleSendUser = async () => {
+    const body = {
+      email: userEmail,
+      name: userName,
+      password: Math.random().toString(36).slice(-10),
+    };
+  
+    try {
+      await axiosPublic.post("users/create", body);
+      alert("Usuário cadastrado com sucesso");
+      onUpdated(true);
+    } catch (error) {
+      console.error(error);
+    } finally {
+
+      setTimeout(() => {
+        onUpdated(false); 
+      }, 1000); 
+    }
+  };
+  
   return (
     <Box
       sx={{
@@ -41,7 +70,8 @@ function CustomForm() {
               variant="filled"
               size="small"
               fullWidth
-              sx={{ marginBottom: 4 }} // Aumentei a margem
+              sx={{ marginBottom: 4 }}
+              onChange={(e) => setUserName(e.target.value)}
             />
             <TextField
               id="fullname"
@@ -49,7 +79,7 @@ function CustomForm() {
               variant="filled"
               size="small"
               fullWidth
-              sx={{ marginBottom: 4 }} // Aumentei a margem
+              sx={{ marginBottom: 4 }}
             />
             <TextField
               id="email"
@@ -57,7 +87,8 @@ function CustomForm() {
               variant="filled"
               size="small"
               fullWidth
-              sx={{ marginBottom: 4 }} // Aumentei a margem
+              sx={{ marginBottom: 4 }}
+              onChange={(e) => setUserEmail(e.target.value)}
             />
           </Box>
           <Box sx={{ flex: 1, marginLeft: 2 }}>
@@ -67,7 +98,7 @@ function CustomForm() {
               variant="filled"
               size="small"
               fullWidth
-              sx={{ marginBottom: 4 }} // Aumentei a margem
+              sx={{ marginBottom: 4 }}
             />
             <Box>
               <Typography
@@ -112,7 +143,12 @@ function CustomForm() {
         <Box
           sx={{ display: "flex", justifyContent: "flex-start", marginTop: 6 }}
         >
-          <Button variant="contained" color="secondary" sx={{ marginRight: 2 }}>
+          <Button
+            variant="contained"
+            color="secondary"
+            sx={{ marginRight: 2 }}
+            onClick={handleSendUser}
+          >
             Registrar
           </Button>
           <Button variant="text" color="secondary">

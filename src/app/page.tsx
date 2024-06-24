@@ -1,3 +1,5 @@
+"use client";
+import React from "react";
 import Image from "next/image";
 import CustomTable from "./components/Table";
 import {
@@ -22,6 +24,8 @@ import SearchIcon from "@mui/icons-material/Search";
 import CustomForm from "./components/form";
 
 export default function Home() {
+  const [isUpdatedTable, setIsUpdatedTable] = React.useState<boolean>(false);
+
   return (
     <>
       <Box
@@ -84,7 +88,7 @@ export default function Home() {
           fullWidth
           sx={{ marginBottom: "2rem" }}
         />
-        <CustomTable />
+        <CustomTable isUpdated={isUpdatedTable} />
         <Typography
           variant="h5"
           sx={{
@@ -119,7 +123,11 @@ export default function Home() {
             icon={EmojiEmotionsIcon}
           />
         </Stack>
-        <CustomForm/>
+        <CustomForm
+          onUpdated={(e) => {
+            setIsUpdatedTable(e);
+          }}
+        />
       </Container>
     </>
   );

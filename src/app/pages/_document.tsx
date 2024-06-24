@@ -3,7 +3,6 @@ import {
       documentGetInitialProps,
     } from '@mui/material-nextjs/v13-pagesRouter';
 import { Head, Html, Main, NextScript } from 'next/document';
-     // or `v1X-pagesRouter` if you are using Next.js v1X
     
      export default function MyDocument(props) {
        return (
