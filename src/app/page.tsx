@@ -29,7 +29,6 @@ export default function Home() {
   return (
     <>
       <Box
-        id="home"
         sx={{
           width: "100%",
           backgroundColor: "#3D3D3D",

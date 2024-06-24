@@ -10,6 +10,7 @@ import {
   Typography,
 } from "@mui/material";
 import { axiosPublic } from "@/api/axios/axios";
+
 interface CustomFormProps {
   onUpdated: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -17,6 +18,8 @@ interface CustomFormProps {
 function CustomForm({ onUpdated }: CustomFormProps) {
   const [userName, setUserName] = React.useState<string>("");
   const [userEmail, setUserEmail] = React.useState<string>("");
+  const [fullName, setFullName] = React.useState<string>("");
+  const [city, setCity] = React.useState<string>("");
 
   const handleSendUser = async () => {
     const body = {
@@ -36,6 +39,13 @@ function CustomForm({ onUpdated }: CustomFormProps) {
         onUpdated(false);
       }, 1000);
     }
+  };
+
+  const clearTextFields = () => {
+    setUserName("");
+    setUserEmail("");
+    setFullName("");
+    setCity("");
   };
 
   return (
@@ -68,8 +78,10 @@ function CustomForm({ onUpdated }: CustomFormProps) {
               variant="filled"
               size="small"
               fullWidth
-              sx={{ marginBottom: 4 }}
+              required
+              value={userName}
               onChange={(e) => setUserName(e.target.value)}
+              sx={{ marginBottom: 4 }}
             />
             <TextField
               id="fullname"
@@ -77,6 +89,8 @@ function CustomForm({ onUpdated }: CustomFormProps) {
               variant="filled"
               size="small"
               fullWidth
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
               sx={{ marginBottom: 4 }}
             />
             <TextField
@@ -85,8 +99,10 @@ function CustomForm({ onUpdated }: CustomFormProps) {
               variant="filled"
               size="small"
               fullWidth
-              sx={{ marginBottom: 4 }}
+              required
+              value={userEmail}
               onChange={(e) => setUserEmail(e.target.value)}
+              sx={{ marginBottom: 4 }}
             />
           </Box>
           <Box sx={{ flex: 1, marginLeft: 2 }}>
@@ -96,6 +112,8 @@ function CustomForm({ onUpdated }: CustomFormProps) {
               variant="filled"
               size="small"
               fullWidth
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
               sx={{ marginBottom: 4 }}
             />
             <Box>
@@ -163,7 +181,7 @@ function CustomForm({ onUpdated }: CustomFormProps) {
           >
             Registrar
           </Button>
-          <Button variant="text" color="secondary">
+          <Button variant="text" color="secondary" onClick={clearTextFields}>
             Cancelar
           </Button>
         </Box>

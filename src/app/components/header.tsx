@@ -62,8 +62,6 @@ function CustomHeader() {
             <Typography
               variant="h6"
               noWrap
-              component={Link}
-              href="#home"
               sx={{
                 ml: 1,
                 mr: 1,
@@ -72,7 +70,11 @@ function CustomHeader() {
                 fontWeight: 700,
                 letterSpacing: ".1rem",
                 textDecoration: "none",
+                cursor: "pointer",
                 color: "#8556AA",
+              }}
+              onClick={() => {
+                window.location.href = `/`;
               }}
             >
               Bem-Vindo
