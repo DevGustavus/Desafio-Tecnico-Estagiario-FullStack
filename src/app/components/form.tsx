@@ -18,14 +18,13 @@ function CustomForm({ onUpdated }: CustomFormProps) {
   const [userName, setUserName] = React.useState<string>("");
   const [userEmail, setUserEmail] = React.useState<string>("");
 
-
   const handleSendUser = async () => {
     const body = {
       email: userEmail,
       name: userName,
       password: Math.random().toString(36).slice(-10),
     };
-  
+
     try {
       await axiosPublic.post("users/create", body);
       alert("Usuário cadastrado com sucesso");
@@ -33,13 +32,12 @@ function CustomForm({ onUpdated }: CustomFormProps) {
     } catch (error) {
       console.error(error);
     } finally {
-
       setTimeout(() => {
-        onUpdated(false); 
-      }, 1000); 
+        onUpdated(false);
+      }, 1000);
     }
   };
-  
+
   return (
     <Box
       sx={{
@@ -107,34 +105,48 @@ function CustomForm({ onUpdated }: CustomFormProps) {
               >
                 DIAS DA SEMANA
               </Typography>
-              <FormGroup row>
+              <FormGroup row sx={{ gap: "1rem" }}>
                 <FormControlLabel
-                  control={<Checkbox defaultChecked />}
-                  label="Segunda"
+                  control={
+                    <Checkbox defaultChecked size="large" color="secondary" />
+                  }
+                  label="Seg"
                 />
                 <FormControlLabel
-                  control={<Checkbox defaultChecked />}
-                  label="Terça"
+                  control={
+                    <Checkbox defaultChecked size="large" color="secondary" />
+                  }
+                  label="Ter"
                 />
                 <FormControlLabel
-                  control={<Checkbox defaultChecked />}
-                  label="Quarta"
+                  control={
+                    <Checkbox defaultChecked size="large" color="secondary" />
+                  }
+                  label="Qua"
                 />
                 <FormControlLabel
-                  control={<Checkbox defaultChecked />}
-                  label="Quinta"
+                  control={
+                    <Checkbox defaultChecked size="large" color="secondary" />
+                  }
+                  label="Qui"
                 />
                 <FormControlLabel
-                  control={<Checkbox defaultChecked />}
-                  label="Sexta"
+                  control={
+                    <Checkbox defaultChecked size="large" color="secondary" />
+                  }
+                  label="Sex"
                 />
                 <FormControlLabel
-                  control={<Checkbox defaultChecked />}
-                  label="Sábado"
+                  control={
+                    <Checkbox defaultChecked size="large" color="secondary" />
+                  }
+                  label="Sáb"
                 />
                 <FormControlLabel
-                  control={<Checkbox defaultChecked />}
-                  label="Domingo"
+                  control={
+                    <Checkbox defaultChecked size="large" color="secondary" />
+                  }
+                  label="Dom"
                 />
               </FormGroup>
             </Box>

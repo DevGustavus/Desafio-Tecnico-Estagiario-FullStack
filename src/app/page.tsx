@@ -29,6 +29,7 @@ export default function Home() {
   return (
     <>
       <Box
+        id="home"
         sx={{
           width: "100%",
           backgroundColor: "#3D3D3D",
@@ -46,7 +47,9 @@ export default function Home() {
           backgroundColor: "#8556AA",
           display: "flex",
           alignItems: "center",
-          padding: "1rem 1rem",
+          justifyContent: "center",
+          gap: "9rem",
+          padding: "1rem",
           marginBottom: "1rem",
         }}
       >
@@ -90,6 +93,7 @@ export default function Home() {
         />
         <CustomTable isUpdated={isUpdatedTable} />
         <Typography
+          id="registro"
           variant="h5"
           sx={{
             fontWeight: 500,
@@ -100,7 +104,16 @@ export default function Home() {
         >
           Registro
         </Typography>
-        <Stack direction={"row"}>
+        <Stack
+          direction="row"
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            marginBottom: "2rem",
+          }}
+          spacing={2}
+        >
           <CommonQuestions
             title={"Precisa de ajuda?"}
             description={
@@ -129,6 +142,16 @@ export default function Home() {
           }}
         />
       </Container>
+      <Box
+        sx={{
+          width: "100%",
+          backgroundColor: "#3D3D3D",
+          display: "flex",
+          alignItems: "center",
+          padding: "45px",
+          marginTop: "3rem",
+        }}
+      ></Box>
     </>
   );
 }

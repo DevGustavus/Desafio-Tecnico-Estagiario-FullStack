@@ -14,14 +14,14 @@ export default function CommonQuestions({
   icon: Icon,
 }: CommonQuestionsProps) {
   return (
-    <Box className="flex flex-col w-72 h-32 font-medium">
+    <Box className="flex flex-col w-80 h-32 font-medium">
       <Box>
-        <Typography variant="body1" color="secondary">
+        <Typography variant="body1" color="secondary" fontWeight={500}>
           {title}
         </Typography>
       </Box>
       <Box className="flex items-center gap-x-3">
-        <Icon fontSize="large" color="secondary" />
+        <Icon fontSize="large" color="secondary" sx={{ fontSize: 55 }} />
         <Typography variant="body1">{description}</Typography>
       </Box>
     </Box>

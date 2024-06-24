@@ -15,12 +15,13 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { Logo } from "../icons/logo";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import { Stack } from "@mui/material";
+import { Link, Stack } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { createTheme } from "@mui/material/styles";
 import AppsIcon from "@mui/icons-material/Apps";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 
+const pages = ["Home"];
 const settings = [
   "Lista de amigos",
   "Artigos salvos",
@@ -59,11 +60,10 @@ function CustomHeader() {
           <Stack direction="row" alignItems="center">
             <Logo />
             <Typography
-              className="text-purple-700"
               variant="h6"
               noWrap
-              component="a"
-              href="#app-bar-with-responsive-menu"
+              component={Link}
+              href="#home"
               sx={{
                 ml: 1,
                 mr: 1,
@@ -72,25 +72,26 @@ function CustomHeader() {
                 fontWeight: 700,
                 letterSpacing: ".1rem",
                 textDecoration: "none",
+                color: "#8556AA",
               }}
             >
               Bem-Vindo
             </Typography>
             <ChevronRightIcon fontSize="small" className="text-gray-600" />
             <Typography
-              className="text-gray-700"
               variant="body1"
               noWrap
-              component="a"
-              href="#app-bar-with-responsive-menu"
+              component={Link}
+              href="#registro"
               sx={{
                 mr: 2,
                 ml: 1,
                 display: { xs: "none", md: "flex" },
                 fontFamily: "sans-serif",
-                fontWeight: 400,
+                fontWeight: 500,
                 letterSpacing: ".1rem",
                 textDecoration: "none",
+                color: "black",
               }}
             >
               Registro
@@ -99,12 +100,12 @@ function CustomHeader() {
 
           <Stack direction={"row"} alignItems="center" spacing={1}>
             <Stack direction={"row"} className="border-r-2 pr-6">
-              <Tooltip title="Delete">
+              <Tooltip title="Help">
                 <IconButton>
                   <HelpOutlineIcon />
                 </IconButton>
               </Tooltip>
-              <Tooltip title="Delete">
+              <Tooltip title="Apps">
                 <IconButton>
                   <AppsIcon />
                 </IconButton>
@@ -118,7 +119,7 @@ function CustomHeader() {
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
                 onClick={handleOpenNavMenu}
-                color="inherit"
+                color="default"
               >
                 <MenuIcon />
               </IconButton>
@@ -139,7 +140,13 @@ function CustomHeader() {
                 sx={{
                   display: { xs: "block", md: "none" },
                 }}
-              ></Menu>
+              >
+                {pages.map((page) => (
+                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">{page}</Typography>
+                  </MenuItem>
+                ))}
+              </Menu>
             </Box>
 
             <IconButton>
