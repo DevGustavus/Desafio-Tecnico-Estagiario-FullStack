@@ -39,7 +39,7 @@ const columns: GridColDef[] = [
 export default function CustomTable({ isUpdated = false }: CustomTableProps) {
   const [users, setUsers] = useState([]);
 
-  function daysOfWeek() {
+  function daysOfWeek(user: any) {
     const daysOfWeek = [
       "Domingo",
       "Segunda-feira",
