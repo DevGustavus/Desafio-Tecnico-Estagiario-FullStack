@@ -11,6 +11,29 @@ Aplicação de teste para a vaga de Estagiário Full-Stack, utilizando Next.js c
 
 ## 👨‍💻 Como rodar a aplicação
 
+### PASSOS MAIS IMPORTANTES!!!
+Após clonar o repositório ou então baixar o projeto compactado, deve-se apenas executar esse comando do NPM para instalar todas as dependências e pacotes do node e afins:
+```
+npm install
+# ou
+yarn install
+# ou
+pnpm install
+# ou
+bun install
+```
+
+Depois é só executar:
+```
+npm run dev
+# ou
+yarn dev
+# ou
+pnpm dev
+# ou
+bun dev
+```
+
 ### Repositório do BackEnd + Documentação:
 <a href="https://bitbucket.org/sensedia/sensedia-candidate-challenge/src/main/">https://bitbucket.org/sensedia/sensedia-candidate-challenge/src/main/</a>
 
